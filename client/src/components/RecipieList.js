@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 import {
   Container,
   Row,
@@ -18,6 +19,7 @@ const RecipieList = () => {
   const dispatch = useDispatch();
 
   const recData = useSelector((state) => state.recipieData);
+  console.log(recData);
 
   useEffect(() => {
     setRecipieList(recData);
@@ -68,6 +70,7 @@ const RecipieList = () => {
                         <p className="ingredients">
                           Ingredients: {item.ingredients}
                         </p>
+                        <Link to={"edit_recipe/" + item._id}>Edit</Link>
                       </CardSubtitle>
                     </CardBody>
                   </Card>
