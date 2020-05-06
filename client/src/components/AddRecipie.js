@@ -25,7 +25,11 @@ const AddRecipie = () => {
     <div>
       <Container>
         <h2 className="my-4">Add Recipie Form</h2>
-        <Form className="add-recipie-form" onSubmit={handleSubmit}>
+        <Form
+          className="add-recipie-form"
+          onSubmit={handleSubmit}
+          enctype="multipart/form-data"
+        >
           <FormGroup>
             <Label>Recipie Title</Label>
             <Input
@@ -47,7 +51,7 @@ const AddRecipie = () => {
           <FormGroup>
             <Label>Image Link</Label>
             <Input
-              type="text"
+              type="file"
               placeholder="Add Image Link"
               value={imageLink}
               onChange={(e) => setImageLink(e.target.value)}
