@@ -10,16 +10,31 @@ const AddRecipie = () => {
   const [imageLink, setImageLink] = useState(null);
   const [redirectionLink, setRedirectionLink] = useState(null);
   const dispatch = useDispatch();
+
+  const onChangeHandle = e =>{
+    setImageLink(e.target.files[0]);
+  }
   const handleSubmit = (e) => {
     e.preventDefault();
-    let postRecipe = {
-      title: title,
-      ingredients: ingredients,
-      redirection: redirectionLink,
-      thumbnail: imageLink,
-    };
+    let postRecipe = new FormData();
+    postRecipe.set("title", title);
+    postRecipe.set("ingredients", ingredients);
+    postRecipe.set("redirection", redirectionLink);
+    postRecipe.append("thumbnail", imageLink);
     dispatch(RecipieAdd(postRecipe));
-    axios.post("/api/items", postRecipe).then((res) => {});
+    axios({
+      method: 'post',
+      url: 'http://localhost:5000/api/items',
+      data: postRecipe,
+      config: { headers: { 'Content-Type': 'multipart/form-data' } }
+    }).then(function (response) {
+      //handle success
+      console.log(response);
+    })
+      .catch(function (response) {
+        //handle error
+        console.log(response);
+      });
   };
   return (
     <div>
@@ -54,7 +69,7 @@ const AddRecipie = () => {
               type="file"
               placeholder="Add Image Link"
               value={imageLink}
-              onChange={(e) => setImageLink(e.target.value)}
+              onChange={onChangeHandle}
             />
           </FormGroup>
           <FormGroup>

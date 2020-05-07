@@ -25,6 +25,7 @@ const getItem = (req, res) => {
 
 // Create item information in database
 const createItem = (req, res) => {
+  console.log(req.body)
   let itemData = {}
   itemData['title'] = req.body.title;
   itemData['ingredients'] = req.body.ingredients;
