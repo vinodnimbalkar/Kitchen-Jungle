@@ -29,7 +29,7 @@ const upload = multer({ storage: storage, fileFilter: thumbnailFilter })
 router.get("/", item.getItems);
 router.get("/:id", item.getItem);
 router.post("/", upload.single('thumbnail'), item.createItem);
-// router.put("/:id", item.updateItem);
-// router.delete("/:id", item.deleteItem);
+router.put("/:id", item.updateItem);
+router.delete("/:id", item.deleteItem);
 
 module.exports = router;
