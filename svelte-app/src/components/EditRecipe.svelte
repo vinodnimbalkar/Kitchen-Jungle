@@ -1,6 +1,7 @@
 <script>
   import { onMount } from "svelte";
   import axios from "axios";
+  import { baseUrl } from "../model/BaseUrl.svelte";
 
   export let params = {};
 
@@ -8,7 +9,6 @@
   let ingredients;
   let imageLink;
   let redirectionLink;
-  const baseUrl = "http://localhost:5000";
 
   onMount(async () => {
     const response = await axios.get(`${baseUrl}/api/items/${params.id}`);

@@ -1,5 +1,6 @@
 <script>
   import axios from "axios";
+  import { baseUrl } from "../model/BaseUrl.svelte";
 
   let title;
   let ingredients;
@@ -18,7 +19,7 @@
     postRecipe.append("thumbnail", imageLink);
     axios({
       method: "post",
-      url: "http://localhost:3000/api/items",
+      url: `${baseUrl}/api/items`,
       data: postRecipe,
       config: { headers: { "Content-Type": "multipart/form-data" } }
     })
