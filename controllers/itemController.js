@@ -33,9 +33,9 @@ const createItem = (req, res) => {
 
   itemCollection.insertMany(itemData, (err, data) => {
     if (err) {
-      res.json({ 'success': false, 'msg': err })
+      res.json({ success: false, msg: err })
     } else {
-      res.json({ success: true, 'msg': data });
+      res.json({ success: true, msg: data });
     }
   });
 }
@@ -44,9 +44,9 @@ const createItem = (req, res) => {
 const updateItem = (req, res) => {
   itemCollection.findByIdAndUpdate({ _id: req.params.id }, req.body, (err, data) => {
     if (err) {
-      res.json({ 'success': false, 'msg': err })
+      res.json({ success: false, msg: err })
     } else {
-      res.json({ 'success': true, 'msg': data })
+      res.json({ success: true, msg: data })
     }
   })
 }
@@ -55,9 +55,9 @@ const updateItem = (req, res) => {
 const deleteItem = (req, res) => {
   itemCollection.deleteOne({ _id: req.params.id }, (err) => {
     if (err) {
-      res.json({ 'success': false, 'msg': err })
+      res.json({ success: false, msg: err })
     } else {
-      res.json({ 'sucsess': true, 'msg': 'Record deleted successfully' });
+      res.json({ success: true, msg: 'Record deleted successfully' });
     }
   });
 }

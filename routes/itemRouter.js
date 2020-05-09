@@ -8,7 +8,7 @@ let item = require('../controllers/itemController');
 
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, path.join(__dirname, '../uploads/'));
+    cb(null, './public/images/thumbnails');
   },
   filename: function (req, file, cb) {
     cb(null, file.originalname)
