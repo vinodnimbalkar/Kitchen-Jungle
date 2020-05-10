@@ -1,3 +1,3 @@
 <script context="module">
-  export const baseUrl = "http://localhost:5100";
+  export const baseUrl = "https://kitchen-jungle.herokuapp.com";
 </script>
